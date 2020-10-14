@@ -8,7 +8,7 @@ def send_welcome(message):
 
 @bot.message_handler(commands=["rules", "Правила"])
 def send_rules(message):
-    bot.send_message(message.chat.id, 'Правила1')
+    bot.send_message(message.chat.id, 'Тест')
 
 if __name__ == "__main__":    
     bot.polling()
