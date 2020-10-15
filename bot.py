@@ -8,8 +8,8 @@ def send_welcome(message):
 
 @bot.message_handler(commands=["rules", "Правила"])
 def send_rules(message):
-    text = '[<Ознакомтесь с правилами чата>](<https://telegra.ph/Pravila-igry-09-08-4>)'
-    bot.send_message(message.chat.id, text, parse_mode='MarkdownV2')
+   @bot.message_handler(commands=['rules', 'Правила'])
+    msg = bot.send_message(message.chat.id, 'https://telegra.ph/Pravila-igry-09-08-4')
 
 if __name__ == "__main__":    
     bot.polling()
