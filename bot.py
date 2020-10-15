@@ -65,7 +65,7 @@ def delete_links(message):
             return
 
 
-restricted_messages = ["кмда", "kmda"]
+restricted_messages = ["@", "t.me/", "http", "http"]
 
 
 # Выдаём Read-only за определённые фразы
