@@ -25,7 +25,7 @@ def send_rules(message):
 	
 @bot.message_handler(commands=["admins"])
 def send_rules(message):
-    link = '[Как стать амдином? Посмотрите статью!](https://telegra.ph/Kak-stat-adminom-v-Mafia-Bonds-09-27)'
+    link = '[Как стать адмиином? Посмотрите статью!](https://telegra.ph/Kak-stat-adminom-v-Mafia-Bonds-09-27)'
     bot.send_message(message.chat.id, link, parse_mode='MarkdownV2')
 
                                
@@ -47,13 +47,14 @@ GROUP_ID = -1001212001029  # ID вашей группы
 
 strings = {
     "ru": {
-        "ro_msg": "Вам запрещено отправлять сюда сообщения за оскорбления в течение 10 минут."
+        "ro_msg": "Вам запрещено отправлять сюда сообщения в течение 10 минут."
     },
     "en": {
         "ro_msg": "You're not allowed to send messages here for 10 minutes."
     }
 }
-   
+
+
 def get_language(lang_code):
     # Иногда language_code может быть None
     if not lang_code:
@@ -76,15 +77,17 @@ def delete_links(message):
             return
 
 
+restricted_messages = ["я веган", "i am vegan"]
 
-restricted_messages = ["@", "t.me/", "http", "https", "ебанутый", "шлюха", "хуесос", "еблан"]
 
-
+# Выдаём Read-only за определённые фразы
 @bot.message_handler(func=lambda message: message.text and message.text.lower() in restricted_messages and message.chat.id == GROUP_ID)
 def set_ro(message):
+    print(message.from_user.language_code)
     bot.restrict_chat_member(message.chat.id, message.from_user.id, until_date=time()+600)
     bot.send_message(message.chat.id, strings.get(get_language(message.from_user.language_code)).get("ro_msg"),
                      reply_to_message_id=message.message_id)
+
 '''
 ------------------------------------------------------------
 '''
