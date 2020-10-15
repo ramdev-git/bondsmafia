@@ -8,7 +8,7 @@ def send_welcome(message):
     bot.send_message(message.chat.id, 'Привет! Вас приветствует Mafia Bonds')
 @bot.message_handler(content_types=['new_chat_members'])
 def handle_docs_audio(message):
-    bot.send_message(message.chat.id, "Добро пожаловать, {0}!".format(username))
+    bot.send_message(message.chat.id, "Добро пожаловать, {0.firstname}!")
     
 @bot.message_handler(commands=["rules", "Правила"])
 def send_rules(message):
