@@ -1,7 +1,8 @@
 import telebot
-
+bot = telebot.TeleBot("1214001983:AAE-VmGC4SK6bGg4nXUvHtlm2ArsPKWsG1s")
+'''
 bot = telebot.TeleBot("1348161215:AAHLT_cdj2657dPdKG0CmZAesqbRL6DHP94")
-
+'''
 @bot.message_handler(commands=["start"])
 def send_welcome(message):
     bot.send_message(message.chat.id, 'Привет! Вас приветствует Mafia Bonds')
