@@ -45,7 +45,6 @@ strings = {
     }
 }
    
-
 def get_language(lang_code):
     # Иногда language_code может быть None
     if not lang_code:
@@ -66,6 +65,8 @@ def delete_links(message):
             bot.delete_message(message.chat.id, message.message_id)
         else:
             return
+
+
 
 restricted_messages = ["@", "t.me/", "http", "https", "ебанутый", "шлюха", "хуесос", "еблан"]
 
