@@ -77,7 +77,7 @@ def delete_links(message):
             return
 
 
- restricted_messages = ["ебанутый", "шлюха", "дон гондон", "хуесос", "еблан"]
+restricted_messages = ["ебанутый", "шлюха", "дон гондон", "хуесос", "еблан"]
 
 
 
