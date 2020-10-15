@@ -26,8 +26,10 @@ def send_rules(message):
 def send_rules(message):
     bot.send_message(message.chat.id, 'Доступные команды:\n /rules - Показывает ссылку на правила этого чата\n /faq - Показывает ссылку на статью как играть в мафию\n ')
     
-    
-    
+@bot.message_handler(commands=['id'])
+def send_start(message):
+	bot.send_message(message.chat.id, "Твой ID: " + str(message.from_user.id), parse_mode = 'HTML')
+
 '''
 -----------------------------------------------------------------------------------------
 '''
