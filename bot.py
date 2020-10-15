@@ -28,7 +28,7 @@ def send_rules(message):
     
 @bot.message_handler(commands=['id'])
 def send_start(message):
-	bot.send_message(message.chat.id, "Твой ID: " + str(message.from_user.id), parse_mode = 'HTML')
+	bot.send_message(message.chat.id, 'Твой ID: ' + str(message.from_user.id))
 
 '''
 -----------------------------------------------------------------------------------------
