@@ -14,5 +14,9 @@ def handle_docs_audio(message):
 def send_rules(message):
     bot.send_message(message.chat.id, 'https://telegra.ph/Pravila-igry-09-08-4')
 
+@bot.message_handler(commands=["rules", "Правила"])
+def send_rules(message):
+    bot.send_message(message.chat.id, 'Доступные команды:\n /rules\n  ')
+
 if __name__ == "__main__":    
     bot.polling()
