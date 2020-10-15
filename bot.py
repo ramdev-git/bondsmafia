@@ -21,11 +21,17 @@ def send_rules(message):
 def send_rules(message):
     link = '[Как играть? Посмотрите в этой статье](https://telegra.ph/FAQ-po-igre-v-Mafiyu-09-23)'
     bot.send_message(message.chat.id, link, parse_mode='MarkdownV2')
+	
+	
+@bot.message_handler(commands=["admins"])
+def send_rules(message):
+    link = '[Как стать амдином? Посмотрите статью!](https://telegra.ph/Kak-stat-adminom-v-Mafia-Bonds-09-27)'
+    bot.send_message(message.chat.id, link, parse_mode='MarkdownV2')
 
                                
 @bot.message_handler(commands=["help"])
 def send_rules(message):
-    bot.send_message(message.chat.id, 'Доступные команды:\n /rules - Показывает ссылку на правила этого чата\n /faq - Показывает ссылку на статью как играть в мафию\n /id - Показывает айди вашего профиля\n')
+    bot.send_message(message.chat.id, 'Доступные команды:\n /rules - Показывает ссылку на правила этого чата\n /faq - Показывает ссылку на статью как играть в мафию\n /id - Показывает айди вашего профиля\n /admins - Как стать админом?\n')
     
 @bot.message_handler(commands=['id'])
 def send_start(message):
