@@ -25,7 +25,7 @@ def send_rules(message):
 	
 @bot.message_handler(commands=["admins"])
 def send_rules(message):
-    link = '[Как стать адмиином? Посмотрите статью!](https://telegra.ph/Kak-stat-adminom-v-Mafia-Bonds-09-27)'
+    link = '[Как стать адмиином? Посмотрите статью](https://telegra.ph/Kak-stat-adminom-v-Mafia-Bonds-09-27)'
     bot.send_message(message.chat.id, link, parse_mode='MarkdownV2')
 
                                
