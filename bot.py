@@ -23,7 +23,7 @@ def send_rules(message):
                                
 @bot.message_handler(commands=["help"])
 def send_rules(message):
-    bot.send_message(message.chat.id, 'Доступные команды:\n /rules - Показывает правила этого чата\n  ')
+    bot.send_message(message.chat.id, 'Доступные команды:\n /rules - Показывает ссылку на правила этого чата\n /faq - Показывает ссылку на статью как играть в мафию\n ')
 
 if __name__ == "__main__":    
     bot.polling()
