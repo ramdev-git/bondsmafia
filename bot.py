@@ -67,8 +67,7 @@ def delete_links(message):
         else:
             return
 
-
-restricted_messages = ["@", "t.me/", "http", "http"]
+restricted_messages = ["@", "t.me/", "http", "https", "ебанутый", "шлюха", "хуесос", "еблан"]
 
 
 # Выдаём Read-only за определённые фразы
