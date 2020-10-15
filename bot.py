@@ -80,7 +80,7 @@ def set_ro(message):
     print(message.from_user.language_code)
     bot.restrict_chat_member(message.chat.id, message.from_user.id, until_date=time()+600)
     bot.send_message(message.chat.id, strings.get(get_language(message.from_user.language_code)).get("ro_msg"),
-                     reply_to_message_id=message.message_id)
+        + str(message.reply_to_message.forward_from.first_name)'''reply_to_message_id=message.message_id)'''
 
 '''
 ------------------------------------------------------------
