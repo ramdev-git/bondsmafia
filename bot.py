@@ -17,13 +17,13 @@ def send_rules(message):
     
 @bot.message_handler(commands=["faq"])
 def send_rules(message):
-    link = '[Как играть? -> Посмотрите в этой статье <-](https://telegra.ph/FAQ-po-igre-v-Mafiyu-09-23)'
+    link = '[Как играть? Посмотрите в этой статье](https://telegra.ph/FAQ-po-igre-v-Mafiyu-09-23)'
     bot.send_message(message.chat.id, link, parse_mode='MarkdownV2')
 
                                
 @bot.message_handler(commands=["help"])
 def send_rules(message):
-    bot.send_message(message.chat.id, 'Доступные команды:\n /rules\n  ')
+    bot.send_message(message.chat.id, 'Доступные команды:\n /rules - Показывает правила этого чата\n  ')
 
 if __name__ == "__main__":    
     bot.polling()
