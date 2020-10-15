@@ -77,8 +77,8 @@ def delete_links(message):
             return
 
 
-restricted_messages = [restricted_messages = ["ебанутый", "шлюха", "дон гондон", "хуесос", "еблан"]
-]
+ restricted_messages = ["ебанутый", "шлюха", "дон гондон", "хуесос", "еблан"]
+
 
 
 # Выдаём Read-only за определённые фразы
