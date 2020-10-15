@@ -34,11 +34,14 @@ def send_start(message):
 '''
 -----------------------------------------------------------------------------------------
 '''
+
+
+
 GROUP_ID = -1001212001029  # ID вашей группы
 
 strings = {
     "ru": {
-        "ro_msg": "Вам запрещено отправлять сюда сообщения за оскорбления в течение 10 минут."
+        "ro_msg": "Вам запрещено отправлять сюда сообщения за оскорбления в течение 10 минут." + str(message.reply_to_message.forward_from.first_name)
     },
     "en": {
         "ro_msg": "You're not allowed to send messages here for 10 minutes."
