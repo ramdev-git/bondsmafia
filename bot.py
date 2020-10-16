@@ -13,9 +13,11 @@ def send_welcome(message):
 def handle_docs_audio(message):
     keyboard = types.InlineKeyboardMarkup()
     url_button = types.InlineKeyboardButton(text="Правила чата", url="https://telegra.ph/Pravila-igry-09-08-4")
-    url_button = types.InlineKeyboardButton(text="Как играть", url="https://telegra.ph/FAQ-po-igre-v-Mafiyu-09-23")
-    url_button = types.InlineKeyboardButton(text="Как стать админом", url="https://telegra.ph/Kak-stat-adminom-v-Mafia-Bonds-09-27")
+    urls_button = types.InlineKeyboardButton(text="Как играть", url="https://telegra.ph/FAQ-po-igre-v-Mafiyu-09-23")
+    urlp_button = types.InlineKeyboardButton(text="Как стать админом", url="https://telegra.ph/Kak-stat-adminom-v-Mafia-Bonds-09-27")
     keyboard.add(url_button)
+    keyboard.add(urls_button)
+    keyboard.add(urlp_button)
     bot.send_message(message.chat.id, "🙋Добро пожаловать, {0.first_name}!\n⚙️Доступные команды можно узнать через /help".format(message.from_user, bot.get_me()), reply_markup=keyboard,)
     
 @bot.message_handler(commands=["rules"])
