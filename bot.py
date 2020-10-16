@@ -12,7 +12,7 @@ def send_welcome(message):
 @bot.message_handler(content_types=['new_chat_members'])
 def handle_docs_audio(message):
     keyboard = types.InlineKeyboardMarkup()
-    url_button = types.InlineKeyboardButton(text="Перейти на Яндекс", url="https://ya.ru")
+    url_button = types.InlineKeyboardButton(text="Правила чата", url="https://telegra.ph/Pravila-igry-09-08-4")
     keyboard.add(url_button)
     bot.send_message(message.chat.id, "🙋Добро пожаловать, {0.first_name}!\n⚙️Доступные команды можно узнать через /help".format(message.from_user, bot.get_me()), reply_markup=keyboard,)
     
