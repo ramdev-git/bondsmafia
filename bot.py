@@ -14,7 +14,7 @@ def handle_docs_audio(message):
   keyboard = types.InlineKeyboardMarkup()
   btn_url = types.InlineKeyboardButton(text="Правила чата", url="https://telegra.ph/Pravila-igry-09-08-4")
   keyboard.add(btn_url)
-  bot.send_message(message.chat.id, "🙋Добро пожаловать, {0.first_name}!\n⚙️Доступные команды можно узнать через /help", reply_markup=keyboard.format(message.from_user, bot.get_me()))
+  bot.send_message(message.chat.id, reply_markup=keyboard "🙋Добро пожаловать, {0.first_name}!\n⚙️Доступные команды можно узнать через /help".format(message.from_user, bot.get_me()))
     
 @bot.message_handler(commands=["rules"])
 def send_rules(message):
