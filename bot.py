@@ -5,8 +5,8 @@ from aiogram import *
 from aiogram.types import *
 
 # 1472805654:AAHTOeNeusZOSqE4eMC7J66lb0v4Dqyyoz0 token
-TOKEN = "1311410269:AAFaabFYx6SZV-fXsEscz1lLMySNpfyvZoA"
-admin_id = 897053725
+TOKEN = "1472805654:AAHTOeNeusZOSqE4eMC7J66lb0v4Dqyyoz0"
+admin_id = 1355949068
 
 
 boty = Bot(token=TOKEN)
