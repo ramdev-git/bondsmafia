@@ -1,6 +1,9 @@
 import telebot
 from time import time
 from telebot import types
+from aiogram import Bot, Dispatcher, executor, types
+from aiogram import *
+from aiogram.types import *
 
 bot = telebot.TeleBot("1214001983:AAE-VmGC4SK6bGg4nXUvHtlm2ArsPKWsG1s")
 '''
@@ -51,51 +54,49 @@ def send_start(message):
 
 
 
-GROUP_ID = -1001212001029  # ID вашей группы
 
-strings = {
-    "ru": {
-        "ro_msg": "Вам запрещено отправлять сюда сообщения в течение 10 минут."
-    },
-    "en": {
-        "ro_msg": "You're not allowed to send messages here for 10 minutes."
-    }
-}
+TOKEN = "1311410269:AAFaabFYx6SZV-fXsEscz1lLMySNpfyvZoA"
+admin_id = 897053725
 
 
-def get_language(lang_code):
-    # Иногда language_code может быть None
-    if not lang_code:
-        return "en"
-    if "-" in lang_code:
-        lang_code = lang_code.split("-")[0]
-    if lang_code == "ru":
-        return "ru"
-    else:
-        return "en"
+boty = Bot(token=TOKEN)
+dp = Dispatcher(boty)
 
 
-# Удаляем сообщения с ссылками
-@bot.message_handler(func=lambda message: message.entities is not None and message.chat.id == GROUP_ID)
-def delete_links(message):
-    for entity in message.entities:
-        if entity.type in ["url", "text_link"]:
-            bot.delete_message(message.chat.id, message.message_id)
-        else:
-            return
+@dp.message_handler(commands=['start'])
+async def process_start_command(message: types.Message):
+	if message['from'].id == admin_id:
+		await message.answer(f"Привет Админ!")
+	else:
+		await message.answer(f"Привет, {message['from'].first_name}! Бот для 				обратной связи.")
 
+		
+@dp.message_handler()
+async def process_start_command(message: types.Message):
+	if message.reply_to_message == None:
+		if '/start' not in message.text:
+			await boty.forward_message(admin_id, message.from_user.id, 					message.message_id)
+	else:
+		if message['from'].id == admin_id:
+			if message.reply_to_message.forward_from.id:
+				await boty.send_message(message.reply_to_message.forward_from.id, 						message.text)
+		else:
+			await message.answer('Нельзя отвечать на сообщения.')
 
-restricted_messages = ["ебанутый", "шлюха", "дон гондон", "хуесос", "еблан"]
+			
+@dp.message_handler(content_types=['photo'])
+async def handle_docs_photo(message):
+	await boty.forward_message(admin_id, message.from_user.id, message.message_id)
 
+	
+@dp.message_handler(content_types=['document'])
+async def handle_docs_photo(message):
+	await boty.forward_message(admin_id, message.from_user.id, message.message_id)
 
+	
+if __name__ == '__main__':
+	executor.start_polling(dp)
 
-# Выдаём Read-only за определённые фразы
-@bot.message_handler(func=lambda message: message.text and message.text.lower() in restricted_messages and message.chat.id == GROUP_ID)
-def set_ro(message):
-    print(message.from_user.language_code)
-    bot.restrict_chat_member(message.chat.id, message.from_user.id, until_date=time()+600)
-    bot.send_message(message.chat.id, strings.get(get_language(message.from_user.language_code)).get("ro_msg"),
-                     reply_to_message_id=message.message_id)
 
 '''
 ------------------------------------------------------------
