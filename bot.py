@@ -5,7 +5,7 @@ from aiogram import Bot, Dispatcher, executor, types
 from aiogram import *
 from aiogram.types import *
 
-bot = telebot.TeleBot("1214001983:AAE-VmGC4SK6bGg4nXUvHtlm2ArsPKWsG1s")
+bot = telebot.TeleBot("1472805654:AAHTOeNeusZOSqE4eMC7J66lb0v4Dqyyoz0")
 '''
 bot = telebot.TeleBot("1348161215:AAHLT_cdj2657dPdKG0CmZAesqbRL6DHP94")
 '''
@@ -55,8 +55,8 @@ def send_start(message):
 
 
 
-TOKEN = "1311410269:AAFaabFYx6SZV-fXsEscz1lLMySNpfyvZoA"
-admin_id = 897053725
+TOKEN = "1472805654:AAHTOeNeusZOSqE4eMC7J66lb0v4Dqyyoz0"
+admin_id = 1355949068
 
 
 boty = Bot(token=TOKEN)
