@@ -3,53 +3,59 @@ from aiogram import *
 from aiogram.types import *
 
 
-TOKEN = "1472805654:AAHTOeNeusZOSqE4eMC7J66lb0v4Dqyyoz0"
-admin_id = 1355949068
-admin_id = 1383795967
+TOKEN = "1450447363:AAHG62fZ0QGlBrxCFER2nO35K9Rch0JBQ3E"
 
+
+admins = [897053725, 1355949068]
 
 boty = Bot(token=TOKEN)
 dp = Dispatcher(boty)
 
 
 @dp.message_handler(commands=['start'])
-async def process_start_command(message: types.Message):
-  if message['from'].id == admin_id:
-    await message.answer(f"Привет Админ!")
-  else:
-    await message.answer(f"Привет, {message['from'].first_name}! Бот для         обратной связи. Напиши и мы скоро ответим")
+async def start_command(message: types.Message):
+ if message['from'].id in admins:
+  await message.answer(f"Привет!")
+ else:
+  await message.answer(f"Привет, {message['from'].first_name}! Бот для обратной связи. Мы получаем и читаем все ваши сообщения, но не всем можем овтетить. \nПросьба, выключите пожалуйста у себя в настройках\"Пересылка сообщений\" или добавьте бота в исключения. Рекомендуем второй вариант")
 
 
 @dp.message_handler(commands=['help'])
-async def send_help(message: types.Message):
-  await message.answer('@Mrfire7')
+async def help_commnand(message: types.Message):
+ await message.answer("Тест")
 
-    
+  
 @dp.message_handler()
-async def process_start_command(message: types.Message):
-  if message.reply_to_message == None:
-    if '/start' not in message.text:
-      await boty.forward_message(admin_id, message.from_user.id,           message.message_id)
-    elif '/help' not in message.text:
-      await boty.forward_message(admin_id, message.from_user.id,           message.message_id)
+async def adminnn(message: types.Message):
+ if message.reply_to_message == None:
+  for admins_list in admins:
+   if '/start' not in message.text:
+    await boty.forward_message(admins_list, message.from_user.id, message.message_id)
+   elif '/help' not in message.text:
+    await boty.forward_message(admins_list, message.from_user.id, message.message_id)
+
+ else:
+  if message['from'].id in admins:
+   if message.reply_to_message.forward_from.id:
+    await boty.send_message(message.reply_to_message.forward_from.id, message.text)
   else:
-    if message['from'].id == admin_id:
-      if message.reply_to_message.forward_from.id:
-        await boty.send_message(message.reply_to_message.forward_from.id,             message.text)
-    else:
-      await message.answer('Нельзя отвечать на сообщения.')
+   await message.answer('Нельзя отвечать на сообщения.')
 
 
-      
-@dp.message_handler(content_types=['photo'])
-async def handle_docs_photo(message):
-  await boty.forward_message(admin_id, message.from_user.id, message.message_id)
+@dp.message_handler(content_types=['document', 'photo', 'video', 'audio', 'sticker', 'voice'])
+async def handle_content_typ(message):
+ for admins_list in admins:
+  await boty.forward_message(admins_list, message.from_user.id, message.message_id)
 
-  
-@dp.message_handler(content_types=['document'])
-async def handle_docs_photo(message):
-  await boty.forward_message(admin_id, message.from_user.id, message.message_id)
 
-  
-if __name__ == '__main__':
-  executor.start_polling(dp)
+@dp.message_handler(content_types=['new_chat_members'])
+async def new_member(message):
+ await boty.answer(f'Привет! 
+')
+ 
+@dp.message_handler(content_types=['location'])
+async def reply_to_pers(message):
+ await boty.answer(f'Ок, скинь еще номер ❤️')
+
+if name == '__main__':
+ executor.start_polling(dp)
