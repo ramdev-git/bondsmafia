@@ -3,7 +3,7 @@ from aiogram import *
 from aiogram.types import *
 
 
-TOKEN = "1311410269:AAFaabFYx6SZV-fXsEscz1lLMySNpfyvZoA"
+TOKEN = "1450447363:AAHG62fZ0QGlBrxCFER2nO35K9Rch0JBQ3E"
 # 980646747
 
 admins = [897053725, 1355949068]
