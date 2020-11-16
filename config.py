@@ -1,5 +1,5 @@
 # admins id
-admins_id = [1445092068, 461151810 ]
+admins_id = [1445092068, 461151810, 730371120 ]
 
 # creator id:)
 creator_id = [1445092068]
