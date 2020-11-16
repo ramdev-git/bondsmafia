@@ -1,164 +1,73 @@
-from pyrogram import Client, filters
-from pyrogram.errors import FloodWait
+from aiogram import Bot, Dispatcher, types, executor
+from aiogram import *
+from aiogram.types import *
 
-from pyrogram.types import ChatPermissions
+import config
 
-import time
-from time import sleep
-import random
 
-app = Client("my_account")
-'''
+boty = Bot(token=config.token)
+dp = Dispatcher(boty)
 
-#повторялка
+inline_kb_full = InlineKeyboardMarkup()
+inline_kb_full.add(InlineKeyboardButton('Уроки aiogram', url='https://surik00.gitbooks.io/aiogram-lessons/content/'))
 
-@app.on_message(filters.me)
-def echo(client, message):
-    message.reply_text(message.text)
-    message.reply_text(message.text)
-    message.reply_text(message.text)
-    message.reply_text(message.text)
-    message.reply_text(message.text)
-    message.reply_text(message.text)
-    message.reply_text(message.text)
-    message.reply_text(message.text)
-    message.reply_text(message.text)
-    message.reply_text(message.text)
-    message.reply_text(message.text)
-    message.reply_text(message.text)
-    message.reply_text(message.text)
-    message.reply_text(message.text)
-    message.reply_text(message.text)
-    message.reply_text(message.text)
-    message.reply_text(message.text)
-    message.reply_text(message.text)
-    message.reply_text(message.text)
-    message.reply_text(message.text)
-    message.reply_text(message.text)
-    message.reply_text(message.text)
-    message.reply_text(message.text)
-    message.reply_text(message.text)
-    message.reply_text(message.text)
-    message.reply_text(message.text)
-    message.reply_text(message.text)
-    message.reply_text(message.text)
-    message.reply_text(message.text)
-    message.reply_text(message.text)
-    message.reply_text(message.text)
-    message.reply_text(message.text)
-    message.reply_text(message.text)
-    message.reply_text(message.text)
-    message.reply_text(message.text)
-    message.reply_text(message.text)
-    message.reply_text(message.text)
-    message.reply_text(message.text)
-    message.reply_text(message.text)
-    message.reply_text(message.text)
-    message.reply_text(message.text)
-    message.reply_text(message.text)
-    message.reply_text(message.text)
-    message.reply_text(message.text)
-    message.reply_text(message.text)
-    message.reply_text(message.text)
-    message.reply_text(message.text)
-    message.reply_text(message.text)
-    message.reply_text(message.text)
-    message.reply_text(message.text)
-    message.reply_text(message.text)
-    message.reply_text(message.text)
-    message.reply_text(message.text)
-    message.reply_text(message.text)
+@dp.message_handler(commands=['start'])
+async def start_command(message: types.Message):
+    if message['from'].id in config.admins_id:
+        await message.answer(f"Привет Админ!")
+    elif message['from'].id in config.creator_id:
+    	await message.answer(f'Ку создатель ))))')
+    else:
+        await message.answer(f"Привет, {message['from'].first_name}!", reply_markup=inline_kb_full)
 
+ 
+@dp.message_handler(content_types=['new_chat_members'])
+async def start_command(message: types.Message):
+    if message['from'].id in config.admins_id:
+        await message.answer(f"Привет Админ!")
+    elif message['from'].id in config.creator_id:
+    	await message.answer(f'Ку создатель ))))')
+    else:
+        await message.answer(f"Привет, {message['from'].first_name}!", reply_markup=inline_kb_full)
+
+
+@dp.message_handler(commands=['help'])
+async def help_commnand(message: types.Message):
+    await message.answer("Чтобы получать наши сообщения в настройках приватности добавьте бота в исключения: Настройки>Конфиденциальность>Пересылка сообщений>Добавить исключения")
+
+        
+@dp.message_handler()
+async def adminnn(message: types.Message):
+    if message.reply_to_message == None:
+        for admins_list in config.admins_id:
+            if '/start' not in message.text:
+                await boty.forward_message(admins_list, message.from_user.id, message.message_id)
+            elif '/help' not in message.text:
+                await boty.forward_message(admins_list, message.from_user.id, message.message_id)
+
+    else:
+        if message['from'].id in config.admins_id:
+            if message.reply_to_message.forward_from.id:
+                await boty.send_message(message.reply_to_message.forward_from.id, message.text)
+        else:
+            await message.answer('Нельзя отвечать на сообщения. Напишите в личные сообщения.')
+
+
+@dp.message_handler(content_types=['document', 'photo', 'video', 'audio', 'sticker', 'voice'])
+async def handle_content_typ(message):
+    for admins_list in config.admins_id:
+        await boty.forward_message(admins_list, message.from_user.id, message.message_id)
 
 '''
-     
-# Команда type
-@app.on_message(filters.command("type", prefixes=".") & filters.me)
-def type(_, msg):
-	orig_text = msg.text.split(".type ", maxsplit=1)[1]
-	text = orig_text
-	tbp = "" # to be printed
-	typing_symbol = "🔥🔫"
+@dp.message_handler(content_types=['new_chat_members'])
+async def new_member(message):
+    await message.answer(f'Привет!', reply_markup=inline_kb_full)
+'''   
 
-	while(tbp != orig_text):
-		try:
-			msg.edit(tbp + typing_symbol)
-			sleep(0.05) # 50 ms
-
-			tbp = tbp + text[0]
-			text = text[1:]
-
-			msg.edit(tbp)
-			sleep(0.05)
-
-		except FloodWait as e:
-			sleep(e.x)
-
-# Команда взлома пентагона
-@app.on_message(filters.command("hack", prefixes=".") & filters.me)
-def hack(_, msg):
-	perc = 0
-
-	while(perc < 100):
-		try:
-			text = "👮‍ Взлом пентагона в процессе ..." + str(perc) + "%"
-			msg.edit(text)
-
-			perc += random.randint(1, 3)
-			sleep(0.1)
-
-		except FloodWait as e:
-			sleep(e.x)
-
-	msg.edit("🟢 Пентагон успешно взломан!")
-	sleep(3)
-
-	msg.edit("👽 Поиск секретных данных об НЛО ...")
-	perc = 0
-
-	while(perc < 100):
-		try:
-			text = "👽 Поиск секретных данных об НЛО ..." + str(perc) + "%"
-			msg.edit(text)
-
-			perc += random.randint(1, 5)
-			sleep(0.15)
-
-		except FloodWait as e:
-			sleep(e.x)
-
-	msg.edit("🦖 Найдены данные о существовании динозавров на земле!")
-
-@app.on_message(filters.command("thanos", prefixes=".") & filters.me)
-def thanos(_, msg):
-    chat = msg.text.split(".thanos ", maxsplit=1)[1]
-
-    members = [
-        x
-        for x in app.iter_chat_members(chat)
-        if x.status not in ("administrator", "creator")
-    ]
-
-    random.shuffle(members)
-
-    app.send_message(chat, "Щелчок Таноса ... *щёлк*")
-
-    for i in range(len(members) // 2):
-        try:
-            app.restrict_chat_member(
-                chat_id=chat,
-                user_id=members[i].user.id,
-                permissions=ChatPermissions(),
-                until_date=int(time.time() + 100),
-            )
-            app.send_message(chat, "Исчез " + members[i].user.first_name)
-        except FloodWait as e:
-            print("> waiting", e.x, "seconds.")
-            time.sleep(e.x)
-
-    app.send_message(chat, "Но какой ценой?")
-   
+@dp.message_handler(content_types=['location'])
+async def reply_to_pers(message):
+    await message.answer(f'Ок, скинь еще номер ❤️')
 
 
-
-app.run()
+if __name__ == '__main__':
+    executor.start_polling(dp)
