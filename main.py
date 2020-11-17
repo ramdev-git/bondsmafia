@@ -17,7 +17,7 @@ async def start_command(message: types.Message):
     elif message['from'].id in config.creator_id:
     	await message.answer(f'Ку создатель ))))')
     else:
-        await message.answer(f"Привет, {message['from'].first_name}." Вас приветствует Mafia Bonds!"
+        await message.answer(f"Привет, {message['from'].first_name}."Вас приветствует Mafia Bonds!"
 Рады видеть Вас в чате, оставайтесь с нами. Прочитайте, пожалуйста, правила чата!", reply_markup=inline_kb_full)
 
  
