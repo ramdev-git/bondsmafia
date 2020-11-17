@@ -9,7 +9,6 @@ boty = Bot(token=config.token)
 dp = Dispatcher(boty)
 
 inline_kb_full = InlineKeyboardMarkup()
-inline_kb_full.add(InlineKeyboardButton('Уроки aiogram', url='https://surik00.gitbooks.io/aiogram-lessons/content/'))
 inline_kb_full.add(InlineKeyboardButton('Правила чата', url='https://telegra.ph/Pravila-igry-11-09'))
 @dp.message_handler(commands=['start'])
 async def start_command(message: types.Message):
