@@ -18,7 +18,7 @@ async def start_command(message: types.Message):
     	await message.answer(f'Ку создатель ))))')
     else:
         await message.answer(f"Привет, {message['from'].first_name}.","Вас приветствует Mafia Bonds!".
-"Рады видеть Вас в чате, оставайтесь с нами. Прочитайте, пожалуйста, правила чата!", reply_markup=inline_kb_full")
+Рады видеть Вас в чате, оставайтесь с нами. Прочитайте, пожалуйста, правила чата!", reply_markup=inline_kb_full")
 
  
 @dp.message_handler(content_types=['new_chat_members'])
