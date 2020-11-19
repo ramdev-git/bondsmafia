@@ -33,7 +33,7 @@ async def start_command(message: types.Message):
 
 @dp.message_handler(commands=['help'])
 async def help_commnand(message: types.Message):
-    await message.answer("Чтобы получать наши сообщения в настройках приватности добавьте бота в исключения: Настройки>Конфиденциальность>Пересылка сообщений>Добавить исключения")
+    await message.answer("Чтобы получать наши сообщения в настройках приватности добавьте бота в исключения: Настройки > Конфиденциальность > Пересылка сообщений > Мои контакты > Добавить исключения @MafiaBondsSupportBot.")
 
         
 @dp.message_handler()
