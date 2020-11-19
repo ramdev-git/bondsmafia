@@ -16,7 +16,7 @@ async def start_command(message: types.Message):
     if message['from'].id in config.admins_id:
         await message.answer(f"Привет Админ!")
     elif message['from'].id in config.creator_id:
-    	await message.answer(f'О, мой Великий @ramd20 я рад видеть тебя ! 😇')
+    	await message.answer(f'Ку создатель @ramd20 ))))')
     else:
         await message.answer(f"Привет, {message['from'].first_name}!",  reply_markup=inline_kb_full)
 
@@ -26,7 +26,7 @@ async def start_command(message: types.Message):
     if message['from'].id in config.admins_id:
         await message.answer(f"Привет Админ!")
     elif message['from'].id in config.creator_id:
-    	await message.answer(f'О, мой Великий @ramd20 я рад видеть тебя ! 😇')
+    	await message.answer(f'Ку создатель @ramd20 ))))')
     else:
         await message.answer(f"Привет, {message['from'].first_name}!", reply_markup=inline_kb_full)
 
@@ -71,4 +71,3 @@ async def reply_to_pers(message):
 
 if __name__ == '__main__':
     executor.start_polling(dp)
-
