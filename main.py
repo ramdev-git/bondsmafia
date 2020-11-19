@@ -11,14 +11,14 @@ dp = Dispatcher(boty)
 inline_kb_full = InlineKeyboardMarkup()
 inline_kb_full.add(InlineKeyboardButton('Правила чата', url='https://telegra.ph/Pravila-igry-11-09'))
 
-@dp.message_handler(commands=['start'])
+dp.message_handler(commands=['start'])
 async def start_command(message: types.Message):
     if message['from'].id in config.admins_id:
         await message.answer(f"Привет Админ!")
     elif message['from'].id in config.creator_id:
-    	await message.answer(f'Ку создатель @ramd20 ))))')
+    	await message.answer(f'Ку создатель ))))')
     else:
-        await message.answer(f"Привет, {message['from'].first_name}!",  reply_markup=inline_kb_full)
+        await message.answer(f"Привет, {message['from'].first_name}!\nВас приветствует Mafia Bonds!\nРады видеть Вас в чате, оставайтесь с нами. Прочитайте, пожалуйста, правила чата!", reply_markup=inline_kb_full)
 
  
 @dp.message_handler(content_types=['new_chat_members'])
@@ -26,7 +26,7 @@ async def start_command(message: types.Message):
     if message['from'].id in config.admins_id:
         await message.answer(f"Привет Админ!")
     elif message['from'].id in config.creator_id:
-    	await message.answer(f'Ку создатель @ramd20 ))))')
+    	await message.answer(f'Ку создатель ))))')
     else:
         await message.answer(f"Привет, {message['from'].first_name}!", reply_markup=inline_kb_full)
 
