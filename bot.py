@@ -48,10 +48,15 @@ async def handle_content_typ(message):
     await boty.forward_message(admins_list, message.from_user.id, message.message_id)
 
 
-@dp.message_handler(content_types=['new_chat_members'])
+'''@dp.message_handler(content_types=['new_chat_members'])
 async def new_member(message):
   await message.answer(f'Привет, {message.first_name}!')
-  
+'''
+@dp.message_handler(content_types=["new_chat_members"])
+async def new_member(message):
+    user_name = message.new_chat_member.first_name
+    boty.send_message(message.chat.id, "Добро пожаловать, {0}!".format(user_name)) 
+    
 @dp.message_handler(content_types=['location'])
 async def reply_to_pers(message):
   await message.answer(f'Ок, скинь еще номер ')
