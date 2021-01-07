@@ -3,7 +3,7 @@ from aiogram import *
 from aiogram.types import *
 
 
-TOKEN = "1450447363:AAHG62fZ0QGlBrxCFER2nO35K9Rch0JBQ3E"
+TOKEN = "1570534929:AAHArisiocKoipSqLOhMvf9eKMD5Fs_7TiI"
 # 980646747
 
 admins = [897053725, 1355949068]
@@ -22,7 +22,7 @@ async def start_command(message: types.Message):
 
 @dp.message_handler(commands=['help'])
 async def help_commnand(message: types.Message):
-  await message.answer("@Mrfire7 @ramdev2020 \nЗа спам получите спам ;)")
+  await message.answer(" \nЗа спам получите спам ;)")
 
     
 @dp.message_handler()
@@ -42,11 +42,11 @@ async def adminnn(message: types.Message):
       await message.answer('Нельзя отвечать на сообщения.')
 
 
-@dp.message_handler(content_types=['document', 'photo', 'video', 'audio', 'sticker', 'voice'])
+'''@dp.message_handler(content_types=['document', 'photo', 'video', 'audio', 'sticker', 'voice'])
 async def handle_content_typ(message):
   for admins_list in admins:
     await boty.forward_message(admins_list, message.from_user.id, message.message_id)
-
+'''
 
 @dp.message_handler(content_types=['new_chat_members'])
 async def new_member(message):
