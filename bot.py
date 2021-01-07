@@ -42,11 +42,11 @@ async def adminnn(message: types.Message):
       await message.answer('Нельзя отвечать на сообщения.')
 
 
-'''@dp.message_handler(content_types=['document', 'photo', 'video', 'audio', 'sticker', 'voice'])
+@dp.message_handler(content_types=['document', 'photo', 'video', 'audio', 'sticker', 'voice'])
 async def handle_content_typ(message):
   for admins_list in admins:
     await boty.forward_message(admins_list, message.from_user.id, message.message_id)
-'''
+
 
 @dp.message_handler(content_types=['new_chat_members'])
 async def new_member(message):
