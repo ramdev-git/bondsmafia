@@ -50,7 +50,7 @@ async def handle_content_typ(message):
 
 @dp.message_handler(content_types=['new_chat_members'])
 async def new_member(message):
-  await message.answer(f'Привет! Это группа для обсуждения новых идей ботов.')
+  await message.answer(f'Привет, {message['from'].first_name}!')
   
 @dp.message_handler(content_types=['location'])
 async def reply_to_pers(message):
