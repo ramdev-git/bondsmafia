@@ -1,6 +1,6 @@
 from telebot import TeleBot 
 
-bot = TeleBot('1517731651:AAGdoRXC-ggDkA3gIQ_sLqBqaJD7ToeAgEQ)
+bot = TeleBot('1517731651:AAGdoRXC-ggDkA3gIQ_sLqBqaJD7ToeAgEQ')
 
 
 @bot.message_handler(content_types=['new_chat_members'])
