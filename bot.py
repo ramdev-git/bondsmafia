@@ -1,4 +1,24 @@
-from aiogram import Bot, Dispatcher, executor, types
+from telebot import TeleBot 
+
+bot = TeleBot('1517731651:AAGdoRXC-ggDkA3gIQ_sLqBqaJD7ToeAgEQ)
+
+
+@bot.message_handler(content_types=['new_chat_members'])
+def greeting(message):
+    bot.reply_to(message, text='Привет')
+
+
+if __name__ == '__main__':
+    bot.polling(none_stop=True)
+
+
+
+
+
+
+
+
+'''from aiogram import Bot, Dispatcher, executor, types
 from aiogram import *
 from aiogram.types import *
 
@@ -63,3 +83,4 @@ async def reply_to_pers(message):
 
 if __name__ == '__main__':
   executor.start_polling(dp)
+'''
