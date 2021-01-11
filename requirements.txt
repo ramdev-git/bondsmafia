@@ -1,1 +1,2 @@
 aiogram==2.10.1
+TeleBot==2.7.0
